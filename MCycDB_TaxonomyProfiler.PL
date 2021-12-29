@@ -40,14 +40,14 @@ if ( !defined $workdir
 my (@files);
 if ( $method eq "diamond" ) {
   @files = glob("$workdir/*$filetype");
-  my $diamond_db = "$diamond makedb --in ./MCycDB_2020.faa --db ./MCycDB_2020";
+  my $diamond_db = "$diamond makedb --in ./MCycDB_2021.faa --db ./MCycDB_2021";
   system("$diamond_db");
   foreach my $file (@files) {
     my $out = $file;
     $out =~ s/$filetype/diamond/;
-    system("$diamond blastx $diamond_parameters -d ./MCycDB_2020 -q $file -o $out")
+    system("$diamond blastx $diamond_parameters -d ./MCycDB_2021 -q $file -o $out")
       if $seqtype eq "nucl";
-    system("$diamond blastp $diamond_parameters -d ./MCycDB_2020 -q $file -o $out")
+    system("$diamond blastp $diamond_parameters -d ./MCycDB_2021 -q $file -o $out")
       if $seqtype eq "prot";
     system("cp $out ./");
   }
@@ -61,7 +61,7 @@ elsif ( $method eq "usearch" ) {
   foreach my $file (@files) {
     my $out = $file;
     $out =~ s/$filetype/usearch/;
-    system("$usearch -usearch_global $file -db ./MCycDB_2020 $usearch_parameters -blast6out $out");
+    system("$usearch -usearch_global $file -db ./MCycDB_2021 $usearch_parameters -blast6out $out");
     system("cp $out ./");
   }
 }
@@ -71,13 +71,13 @@ elsif ( $method eq "blast" ) {
     die "Only fasta files are supported by blast program!";
   }
   @files = glob("$workdir/*$filetype");
-  system("$formatdb -i ./MCycDB_2020 -p T");
+  system("$formatdb -i ./MCycDB_2021 -p T");
   foreach my $file (@files) {
     my $out = $file;
     $out =~ s/$filetype/blast/;
-    system("blastall -p blastp -d ./MCycDB_2020 -i $file -o $out $blast_parameters")
+    system("blastall -p blastp -d ./MCycDB_2021 -i $file -o $out $blast_parameters")
       if $seqtype eq "prot";
-    system("blastall -p blastx -d ./MCycDB_2020 -i $file -o $out $blast_parameters")
+    system("blastall -p blastx -d ./MCycDB_2021 -i $file -o $out $blast_parameters")
       if $seqtype eq "nucl";
     system("cp $out ./");
   }
