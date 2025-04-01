@@ -1,4 +1,6 @@
 # MCycDB
+Alternative links containing unzipped database files: https://www.alipan.com/s/Gs62Gxax7ii 
+
 # MCycDB: a curated database for comprehensively profiling methane cycling processes of environmental microbiomes
 Methane is a critical greenhouse gas with significant impacts on global change. Shotgun metagenome sequencing has greatly facilitated profiling methane cycle gene families and associated microbial taxa. However, there are many limitations for public orthology databases in accurately profiling methane cycle process, such as inefficient database searching, difficulties in distinguishing homologous genes, and low coverage of methane cycle genes and/or gene (sub)families. Therefore, it is necessary to build a manually curated database for accurately and rapidly profiling functions and taxonomy of methane cycling microbial communities in metagenome sequencing data.
 The developed MCycDB contains 298 methane cycling gene families covering 10 methane metabolism pathways with 610,208 representative sequences, and 20,616 homologous orthology groups were also included to reduce false positive sequence assignments.
